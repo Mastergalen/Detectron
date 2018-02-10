@@ -134,10 +134,15 @@ def main(args):
 
         boxes, segms, keypoints, classes = vis_utils.convert_from_cls_format(
             cls_boxes, cls_segms, cls_keyps)
+
+        if boxes is None:
+            boxes = []
+        else:
+            boxes = boxes.tolist()
         
         json_output.append({
             'frame': i,
-            'boxes': boxes.tolist()
+            'boxes': boxes
         })
 
         # Skip writing PDF output
