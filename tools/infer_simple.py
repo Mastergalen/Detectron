@@ -140,19 +140,20 @@ def main(args):
             'boxes': boxes.tolist()
         })
 
-        vis_utils.vis_one_image(
-            im[:, :, ::-1],  # BGR -> RGB for visualization
-            im_name,
-            args.output_dir,
-            cls_boxes,
-            cls_segms,
-            cls_keyps,
-            dataset=dummy_coco_dataset,
-            box_alpha=0.3,
-            show_class=True,
-            thresh=0.7,
-            kp_thresh=2
-        )
+        # Skip writing PDF output
+        # vis_utils.vis_one_image(
+        #     im[:, :, ::-1],  # BGR -> RGB for visualization
+        #     im_name,
+        #     args.output_dir,
+        #     cls_boxes,
+        #     cls_segms,
+        #     cls_keyps,
+        #     dataset=dummy_coco_dataset,
+        #     box_alpha=0.3,
+        #     show_class=True,
+        #     thresh=0.7,
+        #     kp_thresh=2
+        # )
 
     with open(args.output_dir + '/boxes.json', 'w') as outfile:
         json.dump(json_output, outfile, indent=4)
